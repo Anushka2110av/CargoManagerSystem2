@@ -1,0 +1,48 @@
+﻿@model IEnumerable<CargoClass.CargoType>
+
+@{
+    ViewBag.Title = "CargoTypeList";
+}
+
+<h2>CargoTypeList</h2>
+
+<p>
+    @Html.ActionLink("Create New Cargo Type", "AddCargoType", "Administrators", null, new { @class = "btn btn-primary" })
+
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Name)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Description)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.BasePrice)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Name)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Description)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.BasePrice)
+        </td>
+        <td>
+            @Html.ActionLink("Update", "UpdateCargoType", "Administrators", new { id = item.Id }, new { @class = "btn btn-warning" })
+        </td>
+    </tr>
+}
+
+</table>
+
+<p>
+    @Html.ActionLink("Back to Dashboard", "Dashboard", "Administrators", null, new { @class = "btn btn-secondary" })
+</p>

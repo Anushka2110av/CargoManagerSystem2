@@ -1,0 +1,56 @@
+﻿@model CargoClass.CargoOrder
+
+@{
+    ViewBag.Title = "Place an Order";
+}
+
+<h2>Place an Order</h2>
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+    <div class="form-group">
+        <label>Full Name</label>
+        @Html.TextBoxFor(model => model.CustomerName, new { @class = "form-control" })
+    </div>
+
+
+    <div class="form-group">
+        <label>Pickup Location</label>
+        @Html.DropDownListFor(model => model.PickupLocation, new SelectList(ViewBag.Cities, "Name", "Name"), "-- Select City --", new { @class = "form-control" })
+    </div>
+
+    <div class="form-group">
+        <label>Drop Location</label>
+        @Html.DropDownListFor(model => model.DropLocation, new SelectList(ViewBag.Cities, "Name", "Name"), "-- Select City --", new { @class = "form-control" })
+    </div>
+
+    <div class="form-group">
+        <label>Cargo Type</label>
+        @Html.DropDownListFor(model => model.CargoType, new SelectList(ViewBag.CargoTypes), "-- Select Cargo Type --", new { @class = "form-control" })
+    </div>
+
+    <div class="form-group">
+        <label>Pickup Date</label>
+        @Html.TextBoxFor(model => model.PickupDate, "{0:yyyy-MM-dd}", new { @class = "form-control", type = "date", id = "pickupDate" })
+    </div>
+
+    <div class="form-group">
+        <label>Estimated Delivery Date</label>
+        <input type="text" id="estimatedDelivery" class="form-control" readonly />
+    </div>
+
+    <button type="submit" class="btn btn-primary">Submit Order</button>
+}
+
+<script>
+    document.getElementById("pickupDate").addEventListener("change", function () {
+        let pickupDate = new Date(this.value);
+        if (!isNaN(pickupDate)) {
+            let estimatedDate = new Date(pickupDate);
+            estimatedDate.setDate(estimatedDate.getDate() + 10); // Add 10 days
+            document.getElementById("estimatedDelivery").value = estimatedDate.toISOString().split('T')[0];
+        }
+    });
+</script>

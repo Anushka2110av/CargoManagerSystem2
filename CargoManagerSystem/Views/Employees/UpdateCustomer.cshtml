@@ -1,0 +1,125 @@
+﻿@{
+    ViewBag.Title = "UpdateCustomer";
+}
+
+<h2>Update Customer</h2>
+
+@model CargoClass.Customer
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+    <!-- Form Container -->
+    <div class="form-container">
+
+        <!-- Name Field -->
+        <div class="form-group">
+            @Html.LabelFor(model => model.Name)
+            @Html.TextBoxFor(model => model.Name, new { @class = "form-control" })
+        </div>
+
+        <!-- Email Field -->
+        <div class="form-group">
+            @Html.LabelFor(model => model.Email)
+            @Html.TextBoxFor(model => model.Email, new { @class = "form-control" })
+        </div>
+
+        <!-- Phone Field -->
+        <div class="form-group">
+            @Html.LabelFor(model => model.Phone)
+            @Html.TextBoxFor(model => model.Phone, new { @class = "form-control" })
+        </div>
+
+        <!-- Address Field -->
+        <div class="form-group">
+            @Html.LabelFor(model => model.Address)
+            @Html.TextBoxFor(model => model.Address, new { @class = "form-control" })
+        </div>
+
+        <!-- UpdatedAt Field -->
+        <div class="form-group">
+            @Html.LabelFor(model => model.UpdatedAt)
+            @Html.TextBoxFor(model => model.UpdatedAt, new { @class = "form-control" })
+        </div>
+
+        <!-- CreatedAt Field -->
+        <div class="form-group">
+            @Html.LabelFor(model => model.CreatedAt)
+            @Html.TextBoxFor(model => model.CreatedAt, new { @class = "form-control" })
+        </div>
+
+        <!-- Submit Button -->
+        <button type="submit" class="btn-submit">Save Changes</button>
+
+    </div>
+}
+
+<!-- Styling -->
+<style>
+    /* Title */
+    h2 {
+        text-align: center;
+        color: #333;
+        font-size: 2rem;
+        margin-bottom: 20px;
+    }
+
+    /* Form Container */
+    .form-container {
+        max-width: 500px;
+        margin: 0 auto;
+        padding: 30px;
+        background-color: #ffffff;
+        border-radius: 8px;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    }
+
+    /* Form Group */
+    .form-group {
+        margin-bottom: 20px;
+    }
+
+        /* Label Styling */
+        .form-group label {
+            font-size: 1.1rem;
+            font-weight: bold;
+            color: #333;
+        }
+
+    /* Input Fields */
+    .form-control {
+        width: 100%;
+        padding: 12px;
+        border-radius: 5px;
+        border: 1px solid #ddd;
+        font-size: 1rem;
+        box-sizing: border-box;
+        background-color: #f9f9f9;
+        color: #333;
+    }
+
+        /* Focus Effect for Inputs */
+        .form-control:focus {
+            border-color: #2980b9;
+            background-color: #ffffff;
+            box-shadow: 0 0 5px rgba(41, 128, 185, 0.5);
+        }
+
+    /* Button Styling */
+    .btn-submit {
+        width: 100%;
+        padding: 12px;
+        background-color: #2980b9;
+        color: #fff;
+        border: none;
+        border-radius: 5px;
+        font-size: 1.2rem;
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+    }
+
+        .btn-submit:hover {
+            background-color: #1f6f99;
+        }
+</style>

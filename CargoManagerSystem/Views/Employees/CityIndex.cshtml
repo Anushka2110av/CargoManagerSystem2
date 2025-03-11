@@ -1,0 +1,108 @@
+﻿@{
+    ViewBag.Title = "CityIndex";
+}
+
+<h2>CityIndex</h2>
+
+@model IEnumerable<CargoClass.City>
+
+<table class="table table-striped table-bordered">
+    <thead>
+        <tr>
+            <th>@Html.DisplayNameFor(model => model.Id)</th>
+            <th>@Html.DisplayNameFor(model => model.Name)</th>
+            <th>@Html.DisplayNameFor(model => model.Description)</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@Html.DisplayFor(modelItem => item.Id)</td>
+                <td>@Html.DisplayFor(modelItem => item.Name)</td>
+                <td>@Html.DisplayFor(modelItem => item.Description)</td>
+                <td>
+                    @Html.ActionLink("Update City", "UpdatePlace", new { id = item.Id }, new { @class = "btn btn-warning btn-sm" }) |
+                    @Html.ActionLink("Back to List", "DashBoard", new { @class = "btn btn-info btn-sm" })
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+<!-- Add custom styles for the page -->
+<style>
+    /* Table Styles */
+    .table {
+        width: 100%;
+        margin-top: 20px;
+        border-collapse: collapse;
+    }
+
+        .table th, .table td {
+            padding: 12px;
+            text-align: left;
+            border: 1px solid #ddd;
+            font-size: 14px;
+        }
+
+        .table th {
+            background-color: #007bff;
+            color: white;
+        }
+
+    .table-striped tbody tr:nth-of-type(odd) {
+        background-color: #f9f9f9;
+    }
+
+    /* Hover Effect for Rows */
+    .table tbody tr:hover {
+        background-color: #f1f1f1;
+    }
+
+    /* Action Buttons Styling */
+    .btn {
+        font-size: 14px;
+        padding: 8px 15px;
+        text-decoration: none;
+        border-radius: 5px;
+        display: inline-block;
+        margin: 5px;
+    }
+
+    .btn-warning {
+        background-color: #ffc107;
+        color: white;
+    }
+
+        .btn-warning:hover {
+            background-color: #e0a800;
+        }
+
+    .btn-info {
+        background-color: #17a2b8;
+        color: white;
+    }
+
+        .btn-info:hover {
+            background-color: #138496;
+        }
+
+    /* Heading Styles */
+    h2 {
+        font-size: 2rem;
+        margin-bottom: 20px;
+    }
+
+    /* Link Styling */
+    p a {
+        text-decoration: none;
+        color: #007bff;
+        font-weight: bold;
+    }
+
+        p a:hover {
+            text-decoration: underline;
+        }
+</style>

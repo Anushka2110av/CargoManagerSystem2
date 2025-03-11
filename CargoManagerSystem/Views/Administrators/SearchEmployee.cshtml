@@ -1,0 +1,62 @@
+﻿@model CargoClass.Employee
+
+@{
+    ViewBag.Title = "SearchEmployee";
+}
+
+<h2>SearchEmployee</h2>
+<form method="post" action="@Url.Action("SearchEmployee", "Administrators")">
+    <div class="form-group">
+        <label for="searchQuery">Search by Name or Email:</label>
+        <input type="text" id="searchQuery" name="searchQuery" class="form-control" placeholder="Enter employee name or email" required />
+    </div>
+    <button type="submit" class="btn btn-primary">Search</button>
+</form>
+    <div>
+        <h4>Employee</h4>
+        <hr />
+        <dl class="dl-horizontal">
+            <dt>
+                @Html.DisplayNameFor(model => model.Name)
+            </dt>
+
+
+            <dt>
+                @Html.DisplayNameFor(model => model.Role)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Role)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.Email)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Email)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.PhoneNumber)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.PhoneNumber)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.Address)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Address)
+            </dd>
+
+        </dl>
+    </div>
+    <p>
+        @*@Html.ActionLink("Edit", "Edit", new { id = Model.EmployeeId }) |*@
+        @Html.ActionLink("Back to List", "Index")
+        @Html.ActionLink("Back to Employee List", "EmployeeList", "Administrators", null, new { @class = "btn btn-secondary" })
+    </p>

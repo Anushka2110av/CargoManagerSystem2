@@ -1,0 +1,179 @@
+﻿@{
+    ViewBag.Title = "DashBoard";
+}
+
+<h2 class="dashboard-title">DashBoard</h2>
+
+<div class="dashboard-container">
+    <!-- My Profile Section -->
+    <div class="dashboard-item">
+        <h3>My Profile</h3>
+        <p>
+            @Html.ActionLink("Edit Your Profile", "Index", "Employees", new { id = 1 }, new { @class = "btn btn-primary btn-lg", title = "Edit your personal profile" })
+        </p>
+    </div>
+
+    <!-- Customer Management Section -->
+    <div class="dashboard-item">
+        <h3>Customer Management</h3>
+        <p>
+            <a href="@Url.Action("SearchCustomer", "Employees")" class="btn btn-info btn-lg" data-toggle="tooltip" title="Search customer records">Search Customer</a>
+        </p>
+        <p>
+            <a href="@Url.Action("CustomerIndex", "Employees", new { id = 1 })" class="btn btn-warning btn-lg" data-toggle="tooltip" title="Update customer details">Update Customer</a>
+        </p>
+    </div>
+
+    <!-- Cargo Management Section -->
+    <div class="dashboard-item">
+        <h3>Cargo Management</h3>
+        <p>
+            <a href="@Url.Action("SearchCargoFare", "Employees")" class="btn btn-info btn-lg" data-toggle="tooltip" title="Search cargo fare records">Search Cargo Fare</a>
+        </p>
+        <p>
+            <a href="@Url.Action("CargoTypeIndex", "Employees", new { id = 1 })" class="btn btn-warning btn-lg" data-toggle="tooltip" title="Update cargo type details">Update Cargo Type</a>
+        </p>
+    </div>
+
+    <!-- Order Management Section -->
+    <div class="dashboard-item">
+        <h3>Order Management</h3>
+        <p>
+            <a href="@Url.Action("SearchOrders", "Employees")" class="btn btn-info btn-lg" data-toggle="tooltip" title="Search order records">Search Orders</a>
+        </p>
+    </div>
+
+    <!-- Place Management Section -->
+    <div class="dashboard-item">
+        <h3>Place Management</h3>
+        <p>
+            <a href="@Url.Action("CityIndex", "Employees", new { id = 1 })" class="btn btn-warning btn-lg" data-toggle="tooltip" title="Update place details">Update Place</a>
+        </p>
+    </div>
+</div>
+
+<!-- Optional: Include the JavaScript file at the bottom -->
+<script src="~/Scripts/dashboard.js"></script>
+
+<!-- Professional Styling -->
+<style>
+    /* Global Body Styling */
+    body {
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        background-color: #f1f2f6;
+        color: #343a40;
+        margin: 0;
+        padding: 20px;
+    }
+
+    /* Dashboard Title */
+    .dashboard-title {
+        font-size: 2.5rem;
+        font-weight: bold;
+        color: #333;
+        margin-bottom: 20px;
+        text-align: center;
+    }
+
+    /* Dashboard Container: Flexbox Grid */
+    .dashboard-container {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); /* Responsive grid */
+        gap: 25px;
+        padding: 0 20px;
+        margin-top: 40px;
+    }
+
+    /* Individual Dashboard Item */
+    .dashboard-item {
+        background-color: #ffffff;
+        border: 1px solid #ddd;
+        padding: 20px;
+        border-radius: 10px;
+        text-align: center;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+        .dashboard-item:hover {
+            transform: translateY(-8px); /* Elevated hover effect */
+            box-shadow: 0 6px 18px rgba(0, 0, 0, 0.2); /* Enhanced shadow on hover */
+        }
+
+        /* Dashboard Item Heading */
+        .dashboard-item h3 {
+            font-size: 1.6em;
+            margin-bottom: 12px;
+            color: #333;
+        }
+
+        /* Text in Dashboard Item */
+        .dashboard-item p {
+            font-size: 1.1em;
+            color: #007bff;
+            margin-bottom: 20px;
+        }
+
+    /* Button Styling */
+    .btn-lg {
+        font-size: 1.1rem;
+        padding: 12px 25px;
+        width: 100%; /* Make buttons fill container */
+        border-radius: 5px;
+        transition: background-color 0.3s ease, transform 0.3s ease;
+        text-decoration: none;
+    }
+
+    .btn-primary {
+        background-color: #007bff;
+        color: white;
+    }
+
+    .btn-info {
+        background-color: #17a2b8;
+        color: white;
+    }
+
+    .btn-warning {
+        background-color: #ffc107;
+        color: white;
+    }
+
+    /* Button Hover Effects */
+    .btn-primary:hover {
+        background-color: #0056b3;
+        transform: translateY(-2px);
+    }
+
+    .btn-info:hover {
+        background-color: #138496;
+        transform: translateY(-2px);
+    }
+
+    .btn-warning:hover {
+        background-color: #e0a800;
+        transform: translateY(-2px);
+    }
+
+    /* Button Focus */
+    .btn:focus {
+        outline: none;
+        box-shadow: 0 0 0 3px rgba(38, 143, 255, 0.5); /* Subtle focus effect */
+    }
+
+    /* Tooltip Styling */
+    .tooltip-inner {
+        background-color: #333;
+        color: #fff;
+        font-size: 0.9rem;
+    }
+
+    .tooltip-arrow {
+        border-top-color: #333 !important;
+    }
+
+    /* Add Smooth Scroll for Sections */
+    .dashboard-item {
+        scroll-behavior: smooth;
+    }
+</style>

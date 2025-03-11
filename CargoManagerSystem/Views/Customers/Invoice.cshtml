@@ -1,0 +1,46 @@
+﻿@model CargoClass.CargoOrder
+
+@{
+    ViewBag.Title = "Invoice";
+}
+
+<h2>Invoice</h2>
+
+<div class="invoice-box">
+    <table class="table">
+        <tr>
+            <th>Order ID:</th>
+            <td>@Model.OrderNumber</td>
+        </tr>
+        <tr>
+            <th>Full Name:</th>
+            <td>@Model.CustomerName</td>
+        </tr>
+        <tr>
+            <th>Pickup Location:</th>
+            <td>@Model.PickupLocation</td>
+        </tr>
+        <tr>
+            <th>Drop Location:</th>
+            <td>@Model.DropLocation</td>
+        </tr>
+        <tr>
+            <th>Cargo Type:</th>
+            <td>@Model.CargoType</td>
+        </tr>
+        <tr>
+            <th>Pickup Date:</th>
+            <td>@Model.PickupDate.ToShortDateString()</td>
+        </tr>
+        <tr>
+            <th>Estimated Delivery Date:</th>
+            <td>@Model.EstimatedDeliveryDate.ToShortDateString()</td>
+        </tr>
+        <tr>
+            <th>Order Date:</th>
+            <td>@Model.CreatedAt.ToShortDateString()</td>
+        </tr>
+    </table>
+</div>
+
+<p><a href="@Url.Action("Index", "Customers")" class="btn btn-success">Back to Dashboard</a></p>

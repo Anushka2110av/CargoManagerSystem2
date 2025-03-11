@@ -1,0 +1,12 @@
+C:\Users\ASADASHI\source\repos\CargoManagerSystem1\CargoClass\bin\Debug\CargoClass.dll
+C:\Users\ASADASHI\source\repos\CargoManagerSystem1\CargoClass\bin\Debug\CargoClass.pdb
+C:\Users\ASADASHI\source\repos\CargoManagerSystem1\CargoClass\obj\Debug\CargoClass.csproj.AssemblyReference.cache
+C:\Users\ASADASHI\source\repos\CargoManagerSystem1\CargoClass\obj\Debug\CargoClass.csproj.CoreCompileInputs.cache
+C:\Users\ASADASHI\source\repos\CargoManagerSystem1\CargoClass\obj\Debug\CargoClass.dll
+C:\Users\ASADASHI\source\repos\CargoManagerSystem1\CargoClass\obj\Debug\CargoClass.pdb
+C:\Users\apankajk\source\repos\CargoMan\CargoClass\bin\Debug\CargoClass.dll
+C:\Users\apankajk\source\repos\CargoMan\CargoClass\bin\Debug\CargoClass.pdb
+C:\Users\apankajk\source\repos\CargoMan\CargoClass\obj\Debug\CargoClass.csproj.AssemblyReference.cache
+C:\Users\apankajk\source\repos\CargoMan\CargoClass\obj\Debug\CargoClass.csproj.CoreCompileInputs.cache
+C:\Users\apankajk\source\repos\CargoMan\CargoClass\obj\Debug\CargoClass.dll
+C:\Users\apankajk\source\repos\CargoMan\CargoClass\obj\Debug\CargoClass.pdb

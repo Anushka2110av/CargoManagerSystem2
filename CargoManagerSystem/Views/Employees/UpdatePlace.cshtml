@@ -1,0 +1,100 @@
+﻿@model CargoClass.City
+@{
+    ViewBag.Title = "UpdatePlace";
+}
+
+<h2>Update Place</h2>
+
+@using (Html.BeginForm("UpdatePlace", "Employees", new { id = Model.Id }, FormMethod.Post))
+{
+    @Html.AntiForgeryToken()
+
+    <!-- Form Container -->
+    <div class="form-container">
+
+        <!-- Name Field -->
+        <div class="form-group">
+            @Html.LabelFor(model => model.Name)
+            @Html.EditorFor(model => model.Name, new { @class = "form-control" })
+        </div>
+
+        <!-- Description Field -->
+        <div class="form-group">
+            @Html.LabelFor(model => model.Description)
+            @Html.EditorFor(model => model.Description, new { @class = "form-control" })
+        </div>
+
+        <!-- Submit Button -->
+        <button type="submit" class="btn-submit">Save Changes</button>
+
+    </div>
+}
+
+<!-- Styling -->
+<style>
+    /* Title */
+    h2 {
+        text-align: center;
+        color: #333;
+        font-size: 2rem;
+        margin-bottom: 20px;
+    }
+
+    /* Form Container */
+    .form-container {
+        max-width: 500px;
+        margin: 0 auto;
+        padding: 30px;
+        background-color: #ffffff;
+        border-radius: 8px;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    }
+
+    /* Form Group */
+    .form-group {
+        margin-bottom: 20px;
+    }
+
+        /* Label Styling */
+        .form-group label {
+            font-size: 1.1rem;
+            font-weight: bold;
+            color: #333;
+        }
+
+    /* Input Fields */
+    .form-control {
+        width: 100%;
+        padding: 12px;
+        border-radius: 5px;
+        border: 1px solid #ddd;
+        font-size: 1rem;
+        box-sizing: border-box;
+        background-color: #f9f9f9;
+        color: #333;
+    }
+
+        /* Focus Effect for Inputs */
+        .form-control:focus {
+            border-color: #2980b9;
+            background-color: #ffffff;
+            box-shadow: 0 0 5px rgba(41, 128, 185, 0.5);
+        }
+
+    /* Button Styling */
+    .btn-submit {
+        width: 100%;
+        padding: 12px;
+        background-color: #2980b9;
+        color: #fff;
+        border: none;
+        border-radius: 5px;
+        font-size: 1.2rem;
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+    }
+
+        .btn-submit:hover {
+            background-color: #1f6f99;
+        }
+</style>

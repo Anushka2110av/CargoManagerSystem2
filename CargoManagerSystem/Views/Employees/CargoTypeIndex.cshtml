@@ -1,0 +1,85 @@
+﻿@{
+    ViewBag.Title = "CargoTypeIndex";
+}
+
+<h2>CargoTypeIndex</h2>
+
+@model IEnumerable<CargoClass.CargoFare>
+
+<p>
+    @Html.ActionLink("Update", "UpdateCargoType", new { @class = "btn btn-primary" })
+</p>
+
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>@Html.DisplayNameFor(model => model.Id)</th>
+            <th>@Html.DisplayNameFor(model => model.CargoType)</th>
+            <th>@Html.DisplayNameFor(model => model.Fare)</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@Html.DisplayFor(modelItem => item.Id)</td>
+                <td>@Html.DisplayFor(modelItem => item.CargoType)</td>
+                <td>@Html.DisplayFor(modelItem => item.Fare)</td>
+                <td>
+                    @Html.ActionLink("Update CargoType", "UpdateCargoType", new { id = item.Id }, new { @class = "btn btn-warning" })
+                    @Html.ActionLink("Back to List", "DashBoard", new { @class = "btn btn-secondary" })
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+<!-- Custom Styling -->
+<style>
+    /* General Styling */
+    body {
+        font-family: 'Arial', sans-serif;
+        background-color: #f4f6f9;
+        color: #333;
+        margin: 0;
+        padding: 20px;
+    }
+
+    h2 {
+        font-size: 2rem;
+        font-weight: 600;
+        color: #495057;
+        margin-bottom: 20px;
+    }
+
+    /* Table Styling */
+    .table {
+        width: 100%;
+        margin-top: 20px;
+        background-color: #fff;
+        border-radius: 8px;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+        overflow: hidden;
+        border-collapse: collapse;
+    }
+
+        .table th, .table td {
+            padding: 12px 20px;
+            text-align: left;
+            font-size: 14px;
+            color: #495057;
+        }
+
+        .table th {
+            background-color: #007bff;
+            color: white;
+        }
+
+        .table tbody tr:hover {
+            background-color: #f1f1f1;
+        }
+
+    /* Action Buttons Styling */
+    .btn {
+        font-size: 14px;

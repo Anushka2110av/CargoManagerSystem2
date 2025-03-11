@@ -1,0 +1,64 @@
+﻿@model CargoClass.CargoOrder
+
+@{
+    ViewBag.Title = "Track Order";
+}
+
+<h2>Track Your Order</h2>
+
+@using (Html.BeginForm("TrackOrder", "Customer", FormMethod.Post))
+{
+    <div class="form-group">
+        <label>Enter Order Number</label>
+        <input type="text" name="orderNumber" class="form-control" />
+    </div>
+
+    <button type="submit" class="btn btn-warning">Search</button>
+}
+
+@if (Model != null)
+{
+    <h3>Order Details</h3>
+    <table class="table">
+        <tr>
+            <th>Order Number</th>
+            <td>@Model.OrderNumber</td>
+        </tr>
+        <tr>
+            <th>Customer Name</th>
+            <td>@Model.CustomerName</td>
+        </tr>
+        <tr>
+            <th>Destination</th>
+            <td>@Model.Destination</td>
+        </tr>
+        <tr>
+            <th>Status</th>
+            <td>@Model.Status</td>
+        </tr>
+        <tr>
+            <th>Cargo Type</th>
+            <td>@Model.CargoType</td>
+        </tr>
+        <tr>
+            <th>Weight</th>
+            <td>@Model.Weight</td>
+        </tr>
+        <tr>
+            <th>Volume</th>
+            <td>@Model.Volume</td>
+        </tr>
+        <tr>
+            <th>Price</th>
+            <td>@Model.Price</td>
+        </tr>
+        <tr>
+            <th>Order Date</th>
+            <td>@Model.CreatedAt.ToShortDateString()</td>
+        </tr>
+    </table>
+}
+else if (ViewBag.Message != null)
+{
+    <p style="color: red;">@ViewBag.Message</p>
+}

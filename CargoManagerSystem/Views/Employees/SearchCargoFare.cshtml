@@ -1,0 +1,125 @@
+﻿@{
+    ViewBag.Title = "SearchCargoFare";
+}
+
+<h2>Search Cargo Fare</h2>
+
+@model IEnumerable<CargoClass.CargoFare>
+
+<!-- Search Form -->
+@using (Html.BeginForm())
+{
+    <div class="search-container">
+        <input type="text" name="searchTerm" placeholder="Search by Cargo Type" class="search-input" />
+        <input type="submit" value="Search" class="search-button" />
+    </div>
+}
+
+<!-- Cargo Fare Table -->
+<table class="table table-bordered table-striped">
+    <thead>
+        <tr>
+            <th>Cargo Type</th>
+            <th>Fare</th>
+            <th>Action</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var cargoFare in Model)
+        {
+            <tr>
+                <td>@cargoFare.CargoType</td>
+                <td>@cargoFare.Fare</td>
+                <td>
+                    @Html.ActionLink("Back to Dashboard", "DashBoard", null, new { @class = "btn btn-info btn-sm" })
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+<!-- Styling -->
+<style>
+    h2 {
+        color: #333;
+        font-size: 2rem;
+        text-align: center;
+        margin-bottom: 20px;
+    }
+
+    /* Search Bar Styles */
+    .search-container {
+        display: flex;
+        justify-content: center;
+        margin-bottom: 20px;
+    }
+
+    .search-input {
+        padding: 10px;
+        font-size: 1rem;
+        width: 300px;
+        border-radius: 5px;
+        border: 1px solid #ccc;
+        margin-right: 10px;
+    }
+
+    .search-button {
+        padding: 10px 20px;
+        font-size: 1rem;
+        background-color: #007bff;
+        color: white;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+    }
+
+        .search-button:hover {
+            background-color: #0056b3;
+        }
+
+    /* Table Styling */
+    .table {
+        width: 100%;
+        margin-top: 20px;
+        border-collapse: collapse;
+    }
+
+        .table th, .table td {
+            padding: 12px;
+            text-align: left;
+        }
+
+        .table th {
+            background-color: #f8f9fa;
+            font-weight: bold;
+        }
+
+        .table td {
+            background-color: #ffffff;
+        }
+
+    .table-bordered {
+        border: 1px solid #ddd;
+    }
+
+    .table-striped tr:nth-child(even) {
+        background-color: #f2f2f2;
+    }
+
+    /* Action Button Styling */
+    .btn {
+        padding: 8px 12px;
+        text-decoration: none;
+        color: white;
+        border-radius: 5px;
+        cursor: pointer;
+    }
+
+    .btn-info {
+        background-color: #17a2b8;
+    }
+
+        .btn-info:hover {
+            background-color: #138496;
+        }
+</style>
