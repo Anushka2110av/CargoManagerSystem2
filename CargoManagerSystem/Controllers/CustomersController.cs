@@ -58,9 +58,9 @@ namespace CargoManagerSystem.Controllers
 
                 // Set timestamps
 
-                order.CreatedAt = DateTime.Now;
+                //order.CreatedAt = DateTime.Now;
 
-                order.UpdatedAt = DateTime.Now;
+                //order.UpdatedAt = DateTime.Now;
 
                 // Auto-calculate Estimated Delivery Date (Pickup Date + 10 days)
 

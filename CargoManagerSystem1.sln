@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CargoManagerSystem", "Cargo
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CargoClass", "CargoClass\CargoClass.csproj", "{1FD1C81E-99B9-4291-9543-154BFDBF557F}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WepAPI", "WepAPI\WepAPI.csproj", "{EEF286B2-0D60-49D2-9F8E-BBB599F7281F}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,10 @@ Global
 		{1FD1C81E-99B9-4291-9543-154BFDBF557F}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{1FD1C81E-99B9-4291-9543-154BFDBF557F}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{1FD1C81E-99B9-4291-9543-154BFDBF557F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{EEF286B2-0D60-49D2-9F8E-BBB599F7281F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EEF286B2-0D60-49D2-9F8E-BBB599F7281F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EEF286B2-0D60-49D2-9F8E-BBB599F7281F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EEF286B2-0D60-49D2-9F8E-BBB599F7281F}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

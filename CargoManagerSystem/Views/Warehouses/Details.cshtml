@@ -1,0 +1,104 @@
+﻿
+@model CargoClass.Warehouse
+
+@{
+
+    ViewBag.Title = "Details";
+
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Warehouse</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+
+            @Html.DisplayNameFor(model => model.CargoOrder.OrderNumber)
+        </dt>
+
+        <dd>
+
+            @Html.DisplayFor(model => model.CargoOrder.OrderNumber)
+        </dd>
+
+        <dt>
+
+            @Html.DisplayNameFor(model => model.FromLocation)
+        </dt>
+
+        <dd>
+
+            @Html.DisplayFor(model => model.FromLocation)
+        </dd>
+
+        <dt>
+
+            @Html.DisplayNameFor(model => model.ToLocation)
+        </dt>
+
+        <dd>
+
+            @Html.DisplayFor(model => model.ToLocation)
+        </dd>
+
+        <dt>
+
+            @Html.DisplayNameFor(model => model.StoredWeight)
+        </dt>
+
+        <dd>
+
+            @Html.DisplayFor(model => model.StoredWeight)
+        </dd>
+
+        <dt>
+
+            @Html.DisplayNameFor(model => model.StoredVolume)
+        </dt>
+
+        <dd>
+
+            @Html.DisplayFor(model => model.StoredVolume)
+        </dd>
+
+        <dt>
+
+            @Html.DisplayNameFor(model => model.WarehouseLocation)
+        </dt>
+
+        <dd>
+
+            @Html.DisplayFor(model => model.WarehouseLocation)
+        </dd>
+
+        <dt>
+
+            @Html.DisplayNameFor(model => model.StoredAt)
+        </dt>
+
+        <dd>
+
+            @Html.DisplayFor(model => model.StoredAt)
+        </dd>
+
+        <dt>
+
+            @Html.DisplayNameFor(model => model.MovedDate)
+        </dt>
+
+        <dd>
+
+            @Html.DisplayFor(model => model.MovedDate)
+        </dd>
+
+    </dl>
+</div>
+<p>
+
+    @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
+
+    @Html.ActionLink("Back to List", "Index")
+</p>
+

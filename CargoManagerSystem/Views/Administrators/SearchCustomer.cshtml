@@ -1,0 +1,59 @@
+﻿
+@{
+    ViewBag.Title = "SearchCustomer";
+}
+
+<h2>SearchCustomer</h2>
+@model IEnumerable<CargoClass.Customer>
+
+
+<!-- Search Form -->
+<form method="post" action="@Url.Action("SearchCustomer", "Administrators")">
+    <div class="form-group">
+        <label for="searchQuery">Search by Name or Email:</label>
+        <input type="text" id="searchQuery" name="searchQuery" class="form-control" placeholder="Enter customer name or email" required />
+    </div>
+    <button type="submit" class="btn btn-primary">Search</button>
+</form>
+
+<!-- Search Results -->
+
+@if (Model != null && Model.Any())
+
+{
+    <h3>Search Results:</h3>
+    <table class="table">
+        <tr>
+            <th>@Html.DisplayNameFor(model => model.First().Name)</th>
+            <th>@Html.DisplayNameFor(model => model.First().Email)</th>
+            <th>@Html.DisplayNameFor(model => model.First().Phone)</th>
+        </tr>
+
+        @foreach (var item in Model)
+
+        {
+            <tr>
+                <td>@item.Name</td>
+                <td>@item.Email</td>
+                <td>@item.Phone</td>
+            </tr>
+
+        }
+    </table>
+
+}
+
+else
+
+{
+    <p>No results found.</p>
+
+}
+
+<!-- Back to Customer List -->
+<p>
+
+    @Html.ActionLink("Back to Customer List", "CustomerList", "Administrators", null, new { @class = "btn btn-secondary" })
+</p>
+
+

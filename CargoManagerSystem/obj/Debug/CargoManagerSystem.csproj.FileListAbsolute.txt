@@ -237,12 +237,5 @@ C:\Users\apankajk\source\repos\CargoMan\CargoManagerSystem\obj\Debug\CargoManage
 C:\Users\apankajk\source\repos\CargoMan\CargoManagerSystem\obj\Debug\CargoMan.9D634F5E.Up2Date
 C:\Users\apankajk\source\repos\CargoMan\CargoManagerSystem\obj\Debug\CargoManagerSystem.dll
 C:\Users\apankajk\source\repos\CargoMan\CargoManagerSystem\obj\Debug\CargoManagerSystem.pdb
-C:\Users\apankajk\source\repos\CargoMan\CargoManagerSystem\obj\Debug\CargoManagerSystem.Migrations.First.resources
+C:\Users\apankajk\source\repos\CargoMan\CargoManagerSystem\obj\Debug\CargoManagerSystem.Migrations.first.resources
 C:\Users\apankajk\source\repos\CargoMan\CargoManagerSystem\obj\Debug\CargoManagerSystem.csproj.GenerateResource.cache
-C:\Users\apankajk\source\repos\CargoMan\CargoManagerSystem\obj\Debug\CargoManagerSystem.Migrations.IdentitySetup.resources
-C:\Users\apankajk\source\repos\CargoMan\CargoManagerSystem\obj\Debug\CargoManagerSystem.Migrations.IdentitySetup1.resources
-C:\Users\apankajk\source\repos\CargoMan\CargoManagerSystem\obj\Debug\CargoManagerSystem.Migrations.third.resources
-C:\Users\apankajk\source\repos\CargoMan\CargoManagerSystem\obj\Debug\CargoManagerSystem.Migrations.fourth.resources
-C:\Users\apankajk\source\repos\CargoMan\CargoManagerSystem\obj\Debug\CargoManagerSystem.Migrations.fifth.resources
-C:\Users\apankajk\source\repos\CargoMan\CargoManagerSystem\obj\Debug\CargoManagerSystem.Migrations.sixth.resources
-C:\Users\apankajk\source\repos\CargoMan\CargoManagerSystem\obj\Debug\CargoManagerSystem.Migrations.First1.resources

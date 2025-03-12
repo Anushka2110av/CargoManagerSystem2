@@ -1,0 +1,114 @@
+﻿
+@model CargoClass.Warehouse
+
+@{
+
+    ViewBag.Title = "Delete";
+
+}
+
+<h2>Delete</h2>
+
+<h3>Are you sure you want to delete this?</h3>
+<div>
+    <h4>Warehouse</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+
+            @Html.DisplayNameFor(model => model.CargoOrder.OrderNumber)
+        </dt>
+
+        <dd>
+
+            @Html.DisplayFor(model => model.CargoOrder.OrderNumber)
+        </dd>
+
+        <dt>
+
+            @Html.DisplayNameFor(model => model.FromLocation)
+        </dt>
+
+        <dd>
+
+            @Html.DisplayFor(model => model.FromLocation)
+        </dd>
+
+        <dt>
+
+            @Html.DisplayNameFor(model => model.ToLocation)
+        </dt>
+
+        <dd>
+
+            @Html.DisplayFor(model => model.ToLocation)
+        </dd>
+
+        <dt>
+
+            @Html.DisplayNameFor(model => model.StoredWeight)
+        </dt>
+
+        <dd>
+
+            @Html.DisplayFor(model => model.StoredWeight)
+        </dd>
+
+        <dt>
+
+            @Html.DisplayNameFor(model => model.StoredVolume)
+        </dt>
+
+        <dd>
+
+            @Html.DisplayFor(model => model.StoredVolume)
+        </dd>
+
+        <dt>
+
+            @Html.DisplayNameFor(model => model.WarehouseLocation)
+        </dt>
+
+        <dd>
+
+            @Html.DisplayFor(model => model.WarehouseLocation)
+        </dd>
+
+        <dt>
+
+            @Html.DisplayNameFor(model => model.StoredAt)
+        </dt>
+
+        <dd>
+
+            @Html.DisplayFor(model => model.StoredAt)
+        </dd>
+
+        <dt>
+
+            @Html.DisplayNameFor(model => model.MovedDate)
+        </dt>
+
+        <dd>
+
+            @Html.DisplayFor(model => model.MovedDate)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm())
+    {
+
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Delete" class="btn btn-default" /> |
+
+            @Html.ActionLink("Back to List", "Index")
+        </div>
+
+    }
+</div>
+
+
+

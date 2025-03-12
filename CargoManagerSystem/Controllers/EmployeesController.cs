@@ -16,6 +16,66 @@ namespace CargoManagerSystem.Controllers
     {
         private CargoContext db = new CargoContext();
 
+        // ✅ Show Gate Pass Form (GET)
+        public ActionResult CreateGatePass()
+        {
+            ViewBag.CargoOrders = new SelectList(db.CargoOrders, "Id", "OrderNumber"); // ✅ Pass Order Number
+            return View();
+        }
+
+        // ✅ Handle Gate Pass Creation (POST)
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<ActionResult> CreateGatePass([Bind(Include = "CargoOrderId,PassType")] GatePass gatePass)
+        {
+            if (ModelState.IsValid)
+            {
+                gatePass.IssuedDate = DateTime.Now;
+
+                db.GatePasses.Add(gatePass);
+                await db.SaveChangesAsync();
+
+                return RedirectToAction("GatePassList"); // Redirect to Gate Pass List
+            }
+
+            ViewBag.CargoOrders = new SelectList(db.CargoOrders, "Id", "OrderNumber", gatePass.CargoOrderId);
+            return View(gatePass);
+        }
+
+
+
+        // Gate Pass
+
+
+        public ActionResult GatePassList()
+        {
+            var gatePasses = db.GatePasses.Include(gp => gp.CargoOrder).ToList();  // ✅ Ensure CargoOrder is loaded
+            return View(gatePasses);
+        }
+
+        [HttpPost]
+        public ActionResult MarkTruckExit(int id)
+        {
+            var gatePass = db.GatePasses.FirstOrDefault(gp => gp.Id == id);
+            if (gatePass == null)
+            {
+                return HttpNotFound();
+            }
+
+            if (gatePass.Status == "Exited")
+            {
+                return Json(new { success = false, message = "Truck has already exited." });
+            }
+
+            gatePass.Status = "Exited";
+            gatePass.ExitTime = DateTime.Now;
+
+            db.Entry(gatePass).State = EntityState.Modified;
+            db.SaveChanges();
+
+            return Json(new { success = true, message = "Truck exit marked successfully!", exitTime = gatePass.ExitTime });
+        }
+
 
         public ActionResult DashBoard()
         {
@@ -132,7 +192,6 @@ namespace CargoManagerSystem.Controllers
             return View(orders);
         }
 
-
         // Update Cargo Type
         public ActionResult UpdateCargoType(int id)
         {
@@ -197,7 +256,7 @@ namespace CargoManagerSystem.Controllers
                 // Update the existing place's properties with the new values
                 existingPlace.Name = place.Name;
                // existingPlace.Address = place.Address;
-                existingPlace.Description = place.Description;
+                //existingPlace.Description = place.Description;
 
                
 

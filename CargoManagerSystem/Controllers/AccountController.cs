@@ -87,7 +87,7 @@ namespace CargoManagerSystem.Controllers
                     }
                     else if (await UserManager.IsInRoleAsync(user.Id, "Employee"))
                     {
-                        return RedirectToAction("Dashboard", "Employee");
+                        return RedirectToAction("Dashboard", "Employees");
                     }
                     else
                     {

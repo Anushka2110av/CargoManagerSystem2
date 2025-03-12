@@ -38,6 +38,7 @@
                 <td>
                     @Html.ActionLink("Update Customer", "UpdateCustomer", new { id = item.Id }, new { @class = "btn btn-warning btn-sm" }) |
                     @Html.ActionLink("Delete", "DeleteCustomer", new { id = item.Id }, new { @class = "btn btn-danger btn-sm" })
+                    @Html.ActionLink("Back to List", "DashBoard", new { @class = "btn btn-success" })
                 </td>
             </tr>
         }

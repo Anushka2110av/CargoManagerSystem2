@@ -18,6 +18,7 @@ namespace CargoManagerSystem.Controllers
     {
         private CargoContext db = new CargoContext();
 
+
         public async Task<ActionResult> Index()
         {
             dynamic obj = new ExpandoObject();
@@ -128,36 +129,36 @@ namespace CargoManagerSystem.Controllers
             return RedirectToAction("EmployeeList");
 
         }
-        ////customer management
-        //public async Task<ActionResult> CustomerList()
-        //{
+        //customer management
+        public async Task<ActionResult> CustomerList()
+        {
 
-        //    return View(await db.Customers.ToListAsync());
+            return View(await db.Customers.ToListAsync());
 
-        //}
+        }
 
         //[HttpGet]
 
-        //public ActionResult SearchCustomer()
-        //{
-        //    return View();
+        public ActionResult SearchCustomer()
+        {
+            return View();
 
-        //}
+        }
 
-        //[HttpPost]
+        [HttpPost]
 
-        //public async Task<ActionResult> SearchCustomer(string searchQuery)
+        public async Task<ActionResult> SearchCustomer(string searchQuery)
 
-        //{
+        {
 
-        //    var customers = await db.Customers.Where(c => c.Name.Contains(searchQuery) || c.Email.Contains(searchQuery)).ToListAsync();
+            var customers = await db.Customers.Where(c => c.Name.Contains(searchQuery) || c.Email.Contains(searchQuery)).ToListAsync();
 
-        //    return View("CustomerList", customers);
+            return View("CustomerList", customers);
 
-        //}
-        ////
+        }
+        //
 
-        
+
 
         // 🔹 Cargo Type Management
 
@@ -263,7 +264,7 @@ public async Task<ActionResult> CityList()
 
                 db.Cities.Add(city);
 
-                await db.SaveChangesAsync();
+                 db.SaveChanges();
 
                 return RedirectToAction("CityList");
 
@@ -292,6 +293,100 @@ public async Task<ActionResult> CityList()
                 return RedirectToAction("CityList");
             }
             return View(city);
+        }
+
+
+        public async Task<ActionResult> CargoList()
+
+        {
+
+            return View(await db.CargoOrders.ToListAsync());
+
+        }
+
+        [HttpGet]
+
+        public ActionResult BookCargo()
+        {
+            ViewBag.CustomerId = new SelectList(db.Customers, "Id", "Name");
+            return View();
+        }
+
+        [HttpPost]
+
+        [ValidateAntiForgeryToken]
+
+        public async Task<ActionResult> BookCargo(CargoOrder order)
+
+        {
+
+            if (ModelState.IsValid)
+
+            {
+
+                db.CargoOrders.Add(order);
+
+                await db.SaveChangesAsync();
+
+                return RedirectToAction("CargoList");
+
+            }
+            ViewBag.CustomerId = new SelectList(db.Customers, "Id", "Name");
+
+
+            return View(order);
+
+        }
+
+        public async Task<ActionResult> CalculateCargoPrice(int cargoId)
+        {
+            var cargo = await db.CargoOrders.FindAsync(cargoId);
+            if (cargo == null) return HttpNotFound();
+
+            var city = await db.Cities.FirstOrDefaultAsync(c => c.Name == cargo.DropLocation);
+            if (city == null) return HttpNotFound();
+
+            cargo.Price = (decimal)(cargo.Weight * city.PricePerKm);
+            db.Entry(cargo).State = EntityState.Modified;
+            await db.SaveChangesAsync();
+
+            return View("CalculateCargoPrice", cargo);
+        }
+
+        // GET action to show confirmation page
+        [HttpGet]
+        public async Task<ActionResult> CancelCargo(int cargoId)
+        {
+            var cargo = await db.CargoOrders.FindAsync(cargoId);
+            if (cargo == null)
+            {
+                return HttpNotFound();
+            }
+
+            // Return the cargo details to confirm cancellation
+            return View(cargo);
+        }
+
+        // POST action to perform the cancellation
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<ActionResult> CancelCargoConfirmed(int cargoId)
+        {
+            var cargo = await db.CargoOrders.FindAsync(cargoId);
+            if (cargo == null)
+            {
+                return HttpNotFound();
+            }
+
+            // Update the status to "Cancelled"
+            cargo.Status = "Cancelled";
+
+            // Mark the entry as modified and save changes
+            db.Entry(cargo).State = EntityState.Modified;
+            await db.SaveChangesAsync();
+
+            // Redirect to the Cargo List or any other relevant page
+            return RedirectToAction("CargoList");
         }
 
     }

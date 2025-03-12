@@ -17,6 +17,7 @@ namespace CargoManagerSystem.Models
         public DbSet<City> Cities { get; set; }
         public DbSet<Administrator> Administrators { get; set; }
         public DbSet<Pricing> Pricings { get; set; }
-
+        public DbSet<GatePass> GatePasses { get; set; }
+        public DbSet<Warehouse> Warehouses { get; set; }
     }
 }

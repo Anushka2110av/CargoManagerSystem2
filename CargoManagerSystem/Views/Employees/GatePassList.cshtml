@@ -1,0 +1,163 @@
+﻿@model IEnumerable<CargoClass.GatePass>
+
+@{
+
+    ViewBag.Title = "Gate Pass List";
+
+}
+
+<h2 class="text-center text-primary">🚛 Gate Pass Management</h2>
+
+<a href="@Url.Action("CreateGatePass", "Employees")" class="btn btn-primary mb-3">
+    ➕ Create New Gate Pass
+</a>
+
+
+<table class="table table-hover table-striped shadow-lg">
+    <thead class="bg-dark text-white">
+        <tr>
+            <th>Order Number</th>
+            <th>Pass Type</th>
+            <th>Issued Date</th>
+            <th>Status</th>
+            <th>Action</th>
+        </tr>
+    </thead>
+    <tbody>
+
+        @foreach (var pass in Model)
+
+        {
+            <tr>
+                <td>@(pass.CargoOrder != null ? pass.CargoOrder.OrderNumber : "N/A")</td>  <!-- Null Check -->
+                <td>@pass.PassType</td>
+                <td>@pass.IssuedDate.ToString("yyyy-MM-dd HH:mm")</td>
+                <td>
+
+                    @if (pass.Status == "Exited")
+
+                    {
+                        <span class="badge bg-success">Exited ✅</span>
+
+                    }
+
+                    else
+
+                    {
+                        <span class="badge bg-warning text-dark">Pending ⏳</span>
+
+                    }
+                </td>
+                <td>
+
+                    @if (pass.Status != "Exited")
+
+                    {
+                        <button class="btn btn-danger btn-exit shadow" data-id="@pass.Id">
+
+                            🚛 Mark Exit
+                        </button>
+
+                    }
+
+                    else
+
+                    {
+                        <span class="text-success fw-bold">Truck Exited</span>
+
+                    }
+                </td>
+            </tr>
+
+        }
+    </tbody>
+</table>
+
+<!-- ✅ Loading Spinner -->
+<div id="loadingSpinner" class="text-center d-none">
+    <div class="spinner-border text-danger" role="status">
+        <span class="visually-hidden">Processing...</span>
+    </div>
+</div>
+
+<!-- ✅ SweetAlert & jQuery -->
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+<script>
+
+    $(document).ready(function () {
+
+        $(".btn-exit").click(function () {
+
+            var gatePassId = $(this).data("id");
+
+            Swal.fire({
+
+                title: "Confirm Exit?",
+
+                text: "Are you sure you want to mark this truck as exited?",
+
+                icon: "warning",
+
+                showCancelButton: true,
+
+                confirmButtonColor: "#d33",
+
+                cancelButtonColor: "#3085d6",
+
+                confirmButtonText: "Yes, mark exit!"
+
+            }).then((result) => {
+
+                if (result.isConfirmed) {
+
+                    $("#loadingSpinner").removeClass("d-none"); // Show loader
+
+                    $.ajax({
+
+                        url: '@Url.Action("MarkTruckExit", "Employees")',
+
+                        type: 'POST',
+
+                        data: { id: gatePassId },
+
+                        success: function (response) {
+
+                            $("#loadingSpinner").addClass("d-none"); // Hide loader
+
+                            if (response.success) {
+
+                                Swal.fire("Success!", response.message, "success").then(() => {
+
+                                    location.reload(); // Refresh page
+
+                                });
+
+                            } else {
+
+                                Swal.fire("Oops!", response.message, "error");
+
+                            }
+
+                        },
+
+                        error: function () {
+
+                            $("#loadingSpinner").addClass("d-none"); // Hide loader
+
+                            Swal.fire("Error!", "Failed to mark exit.", "error");
+
+                        }
+
+                    });
+
+                }
+
+            });
+
+        });
+
+    });
+</script>
+

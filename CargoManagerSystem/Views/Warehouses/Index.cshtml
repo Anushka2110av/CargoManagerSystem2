@@ -1,0 +1,46 @@
+﻿@model IEnumerable<CargoClass.Warehouse>
+
+@{
+    ViewBag.Title = "Warehouse Management";
+}
+
+<h2 class="text-center text-primary">🏢 Warehouse Management</h2>
+
+<!-- ✅ Create New Button -->
+<a href="@Url.Action("Create")" class="btn btn-success mb-3">➕ Create New</a>
+
+<table class="table table-hover table-striped shadow-lg">
+    <thead class="bg-dark text-white">
+        <tr>
+            <th>@Html.DisplayNameFor(model => model.CargoOrder.OrderNumber)</th>
+            <th>@Html.DisplayNameFor(model => model.FromLocation)</th>
+            <th>@Html.DisplayNameFor(model => model.ToLocation)</th>
+            <th>@Html.DisplayNameFor(model => model.StoredWeight)</th>
+            <th>@Html.DisplayNameFor(model => model.StoredVolume)</th>
+            <th>@Html.DisplayNameFor(model => model.WarehouseLocation)</th>
+            <th>@Html.DisplayNameFor(model => model.StoredAt)</th>
+            <th>@Html.DisplayNameFor(model => model.MovedDate)</th>
+            <th class="text-center">Action</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@Html.DisplayFor(modelItem => item.CargoOrder.OrderNumber)</td>
+                <td>@Html.DisplayFor(modelItem => item.FromLocation)</td>
+                <td>@Html.DisplayFor(modelItem => item.ToLocation)</td>
+                <td>@Html.DisplayFor(modelItem => item.StoredWeight)</td>
+                <td>@Html.DisplayFor(modelItem => item.StoredVolume)</td>
+                <td>@Html.DisplayFor(modelItem => item.WarehouseLocation)</td>
+                <td>@Html.DisplayFor(modelItem => item.StoredAt)</td>
+                <td>@Html.DisplayFor(modelItem => item.MovedDate)</td>
+                <td class="text-center">
+                    <a href="@Url.Action("Edit", new { id = item.Id })" class="btn btn-warning btn-sm">Edit</a>
+                    @*<a href="@Url.Action("Details", new { id = item.Id })" class="btn btn-info btn-sm"> Details</a>*@
+                    <a href="@Url.Action("Delete", new { id = item.Id })" class="btn btn-danger btn-sm"> Delete</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
